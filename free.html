@@ -1,0 +1,3712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreelanceHub - Freelancer Marketplace</title>
+<!-- Merged build: feature set of main4 + visual polish of main3 -->
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+header {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #facc15;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.nav-links a,
+.nav-links button {
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+}
+
+.nav-links a:hover,
+.nav-links button:hover {
+    color: #fde68a;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+    padding: 90px 20px;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 52px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+.hero h1 span {
+    color: #4f46e5;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: #4f46e5;
+    color: white;
+}
+
+.btn-secondary {
+    background: white;
+    color: #4f46e5;
+    border: 1px solid #4f46e5;
+}
+
+.btn-success {
+    background: #16a34a;
+    color: white;
+}
+
+.btn-danger {
+    background: #dc2626;
+    color: white;
+}
+
+.btn-warning {
+    background: #d97706;
+    color: white;
+}
+
+.btn-dark {
+    background: #111827;
+    color: white;
+}
+
+.hero-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 45px rgba(79,70,229,0.15);
+}
+
+.hero-card h3 {
+    margin-bottom: 20px;
+    color: #4f46e5;
+}
+
+.hero-stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+}
+
+section {
+    padding: 70px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #6b7280;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+.feature-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.search-area {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.search-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 12px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    outline: none;
+    background: white;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #4f46e5;
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.project-grid,
+.freelancer-grid,
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.category {
+    display: inline-block;
+    background: #eef2ff;
+    color: #4f46e5;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.skill {
+    display: inline-block;
+    background: #f3f4f6;
+    padding: 5px 9px;
+    border-radius: 15px;
+    margin: 3px;
+    font-size: 12px;
+}
+
+.card-footer {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.price {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.deadline {
+    color: #dc2626;
+    font-size: 13px;
+}
+
+.profile-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#4f46e5,#7c3aed);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.stars {
+    color: #f59e0b;
+    margin: 8px 0;
+}
+
+/* Company logo marquee (polish from main3) */
+.partners {
+    overflow: hidden;
+    background: white;
+    padding: 35px 0;
+}
+
+.marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.partner-track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    animation: scroll 25s linear infinite;
+}
+
+.marquee:hover .partner-track {
+    animation-play-state: paused;
+}
+
+.partner {
+    min-width: 180px;
+    height: 70px;
+    margin: 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.partner img {
+    max-width: 150px;
+    max-height: 48px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.stats {
+    background: linear-gradient(135deg,#4f46e5,#7c3aed);
+    color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.stat h2 {
+    font-size: 38px;
+    margin-bottom: 8px;
+}
+
+.stat p {
+    opacity: 0.9;
+}
+
+.map-box {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.world-map {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+}
+
+.marker {
+    fill: #ef4444;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+.rating-box {
+    text-align: center;
+    background: white;
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+.big-rating {
+    font-size: 55px;
+    font-weight: bold;
+    color: #4f46e5;
+}
+
+.testimonial-card {
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: "\201C";
+    font-size: 60px;
+    color: #c7d2fe;
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+
+.cta {
+    background: linear-gradient(135deg,#111827,#312e81);
+    color: white;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.cta p {
+    margin-bottom: 25px;
+    color: #d1d5db;
+}
+
+.auth-section {
+    background: #eef2ff;
+}
+
+.auth-box {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+.auth-box h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.portal {
+    display: none;
+    background: #eef2ff;
+    min-height: 600px;
+}
+
+.portal.active {
+    display: block;
+}
+
+.portal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.dashboard-card h2 {
+    color: #4f46e5;
+    margin-top: 8px;
+}
+
+.portal-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.portal-panel h3 {
+    margin-bottom: 20px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+}
+
+th {
+    background: #f9fafb;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-accepted,
+.status-completed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-rejected {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-progress {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.message {
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.notification {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: #111827;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: none;
+    z-index: 2000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.notification.show {
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.empty {
+    text-align: center;
+    padding: 30px;
+    color: #6b7280;
+}
+
+footer {
+    background: #111827;
+    color: white;
+    padding: 40px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.footer-grid h3 {
+    margin-bottom: 15px;
+}
+
+.footer-grid p,
+.footer-grid li {
+    color: #9ca3af;
+    line-height: 1.8;
+    list-style: none;
+}
+
+.footer-bottom {
+    border-top: 1px solid #374151;
+    margin-top: 30px;
+    padding-top: 20px;
+    text-align: center;
+    color: #9ca3af;
+}
+
+.category-select {
+    min-height: 48px;
+}
+
+.review-item {
+    border-left: 4px solid #4f46e5;
+    background: #f9fafb;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 7px;
+}
+
+.progress-container {
+    background: #e5e7eb;
+    border-radius: 20px;
+    height: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #4f46e5;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+    }
+
+    .features,
+    .stats-grid,
+    .dashboard-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .project-grid,
+    .freelancer-grid,
+    .testimonial-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width: 650px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .features,
+    .stats-grid,
+    .dashboard-grid,
+    .project-grid,
+    .freelancer-grid,
+    .testimonial-grid,
+    .footer-grid,
+    .search-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+}
+
+/* Reduced motion support (from main3) */
+@media(prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .partner-track,
+    .marker {
+        animation: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+        <div class="logo">Freelance<span>Hub</span></div>
+
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#freelancers">Freelancers</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#portal" id="portalNav" class="hidden">My Portal</a>
+            <a href="#login" id="loginNav">Login</a>
+            <a href="#register" id="registerNav">Register</a>
+            <button id="logoutBtn" class="hidden" onclick="logout()">Logout</button>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+
+        <div>
+            <h1>Find Skills. <span>Build Projects.</span> Grow Together.</h1>
+
+            <p>
+                FreelanceHub connects clients with skilled professionals
+                for project-based work. Discover talent, post projects,
+                submit proposals, communicate and manage your work in one place.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">Explore Projects</a>
+                <a href="#register" class="btn btn-secondary">Join FreelanceHub</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <h3>Marketplace Overview</h3>
+
+            <div class="hero-stat">
+                <span>Skilled Freelancers</span>
+                <strong>10K+</strong>
+            </div>
+
+            <div class="hero-stat">
+                <span>Projects</span>
+                <strong>12K+</strong>
+            </div>
+
+            <div class="hero-stat">
+                <span>Countries</span>
+                <strong>150+</strong>
+            </div>
+
+            <div class="hero-stat">
+                <span>Average Rating</span>
+                <strong>4.8 ⭐</strong>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Everything You Need</h2>
+            <p>A complete freelance marketplace experience</p>
+        </div>
+
+        <div class="features">
+
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Post Projects</h3>
+                <p>Clients can create projects with budgets, skills, categories and deadlines.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👨‍💻</div>
+                <h3>Skilled Freelancers</h3>
+                <p>Discover professionals with skills, portfolios, experience and ratings.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📨</div>
+                <h3>Proposals</h3>
+                <p>Freelancers can submit bids, cover letters and estimated delivery times.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Communication</h3>
+                <p>Clients and freelancers can exchange project-related messages.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Available Projects</h2>
+            <p>Find projects that match your skills</p>
+        </div>
+
+        <div class="search-area">
+
+            <div class="search-grid">
+
+                <input
+                    type="text"
+                    id="projectSearch"
+                    placeholder="Search projects..."
+                    oninput="renderProjects()"
+                >
+
+                <select id="projectCategoryFilter" onchange="renderProjects()">
+                    <option value="">All Categories</option>
+                </select>
+
+                <select id="projectSort" onchange="renderProjects()">
+                    <option value="newest">Newest</option>
+                    <option value="budgetHigh">Budget: High to Low</option>
+                    <option value="budgetLow">Budget: Low to High</option>
+                </select>
+
+            </div>
+
+        </div>
+
+        <div id="projectList" class="project-grid"></div>
+
+    </div>
+</section>
+
+<!-- FREELANCERS -->
+<section id="freelancers">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Skilled Freelancers</h2>
+            <p>Connect with professionals from different fields</p>
+        </div>
+
+        <div class="search-area">
+            <input
+                type="text"
+                id="freelancerSearch"
+                placeholder="Search freelancers by name or skill..."
+                oninput="renderFreelancers()"
+            >
+        </div>
+
+        <div id="freelancerList" class="freelancer-grid"></div>
+
+    </div>
+</section>
+
+<!-- COMPANY / PROFESSIONALS -->
+<section>
+    <div class="container">
+        <div class="section-title">
+            <h2>Companies &amp; Professionals</h2>
+            <p>Explore opportunities across leading technology and creative fields</p>
+        </div>
+    </div>
+
+    <div class="partners">
+        <div class="marquee">
+            <div class="partner-track">
+
+                <div class="partner"><img src="https://cdn.simpleicons.org/google" alt="Google"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/microsoft" alt="Microsoft"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/apple" alt="Apple"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/meta" alt="Meta"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/netflix" alt="Netflix"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/samsung" alt="Samsung"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/qualcomm" alt="Qualcomm"></div>
+
+                <div class="partner"><img src="https://cdn.simpleicons.org/google" alt="Google"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/microsoft" alt="Microsoft"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/apple" alt="Apple"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/meta" alt="Meta"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/netflix" alt="Netflix"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/samsung" alt="Samsung"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA"></div>
+                <div class="partner"><img src="https://cdn.simpleicons.org/qualcomm" alt="Qualcomm"></div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>What Our Community Says</h2>
+            <p>Experiences from clients and freelancers</p>
+        </div>
+
+        <div class="testimonial-grid">
+
+            <div class="card testimonial-card">
+                <h3>Rahul Kumar</h3>
+                <small>Client • Website Project</small>
+                <div class="stars">★★★★★</div>
+                <p>
+                    I found a skilled developer for my website project
+                    and was able to manage the project easily.
+                </p>
+            </div>
+
+            <div class="card testimonial-card">
+                <h3>Anjali Sharma</h3>
+                <small>Freelancer • Graphic Design</small>
+                <div class="stars">★★★★★</div>
+                <p>
+                    The platform provides a simple way to showcase
+                    my skills and submit proposals.
+                </p>
+            </div>
+
+            <div class="card testimonial-card">
+                <h3>Vikram Kumar</h3>
+                <small>Client • Business Project</small>
+                <div class="stars">★★★★☆</div>
+                <p>
+                    Project communication and proposal management
+                    made the workflow easier.
+                </p>
+            </div>
+
+            <div class="card testimonial-card">
+                <h3>Priya Sharma</h3>
+                <small>Freelancer • UI/UX Design</small>
+                <div class="stars">★★★★★</div>
+                <p>
+                    I can display my portfolio and connect with
+                    clients looking for design professionals.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- STATISTICS -->
+<section class="stats">
+    <div class="container">
+
+        <div class="section-title">
+            <h2 style="color:white;">Platform Statistics</h2>
+            <p style="color:#ddd;">Sample statistics for the project demonstration</p>
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat">
+                <h2>10K+</h2>
+                <p>Registered Users</p>
+            </div>
+
+            <div class="stat">
+                <h2>12K+</h2>
+                <p>Projects Posted</p>
+            </div>
+
+            <div class="stat">
+                <h2>150+</h2>
+                <p>Countries Reached</p>
+            </div>
+
+            <div class="stat">
+                <h2>4.8</h2>
+                <p>Average Rating</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- WORLD MAP -->
+<section>
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Global Freelance Community</h2>
+            <p>Professionals and clients can connect across different regions</p>
+        </div>
+
+        <div class="map-box">
+
+            <svg class="world-map" viewBox="0 0 900 450">
+
+                <path
+                    d="M90 130
+                    L150 80 L240 70 L300 110 L340 170
+                    L300 210 L220 190 L160 220 L100 190 Z"
+                    fill="#e5e7eb"
+                />
+
+                <path
+                    d="M390 100
+                    L470 70 L550 90 L610 130 L590 180
+                    L530 210 L490 260 L430 240 L400 190 Z"
+                    fill="#e5e7eb"
+                />
+
+                <path
+                    d="M610 120
+                    L700 100 L800 130 L840 180 L800 220
+                    L730 210 L690 250 L630 220 Z"
+                    fill="#e5e7eb"
+                />
+
+                <path
+                    d="M430 280
+                    L500 270 L540 330 L500 400 L450 360 Z"
+                    fill="#e5e7eb"
+                />
+
+                <circle class="marker" cx="230" cy="150" r="8"/>
+                <circle class="marker" cx="470" cy="150" r="8"/>
+                <circle class="marker" cx="690" cy="160" r="8"/>
+                <circle class="marker" cx="500" cy="330" r="8"/>
+
+            </svg>
+
+            <p>
+                🌎 Connected marketplace for clients and freelancers worldwide
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- RATINGS -->
+<section>
+    <div class="container">
+
+        <div class="rating-box">
+
+            <div class="big-rating">4.8</div>
+
+            <div class="stars" style="font-size:28px;">
+                ★★★★★
+            </div>
+
+            <h3>Average Community Rating</h3>
+
+            <p>
+                Based on sample reviews and ratings used for this project demonstration.
+            </p>
+
+            <p style="margin-top:10px;color:#6b7280;">
+                5K+ sample reviews
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- LOGIN -->
+<section class="auth-section" id="login">
+    <div class="container">
+
+        <div class="auth-box">
+
+            <h2>Login</h2>
+
+            <form onsubmit="login(event)">
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Role</label>
+
+                    <select id="loginRole" required>
+                        <option value="client">Client</option>
+                        <option value="freelancer">Freelancer</option>
+                        <option value="admin">Admin</option>
+                    </select>
+
+                </div>
+
+                <button class="btn btn-primary" style="width:100%;">
+                    Login
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- REGISTER -->
+<section class="auth-section" id="register">
+    <div class="container">
+
+        <div class="auth-box">
+
+            <h2>Create Account</h2>
+
+            <form onsubmit="register(event)">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="registerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="registerPassword" minlength="6" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Role</label>
+
+                    <select id="registerRole" required>
+                        <option value="client">Client</option>
+                        <option value="freelancer">Freelancer</option>
+                    </select>
+
+                </div>
+
+                <button class="btn btn-primary" style="width:100%;">
+                    Register
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- USER PORTAL -->
+<section class="portal" id="portal">
+    <div class="container">
+
+        <div class="portal-header">
+            <div>
+                <h2 id="portalTitle">My Portal</h2>
+                <p id="portalSubtitle"></p>
+            </div>
+
+            <button class="btn btn-dark" onclick="refreshPortal()">
+                Refresh
+            </button>
+        </div>
+
+        <!-- CLIENT PORTAL -->
+        <div id="clientPortal">
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-card">
+                    <p>Total Projects</p>
+                    <h2 id="clientTotalProjects">0</h2>
+                </div>
+
+                <div class="dashboard-card">
+                    <p>Active Projects</p>
+                    <h2 id="clientActiveProjects">0</h2>
+                </div>
+
+                <div class="dashboard-card">
+                    <p>Proposals Received</p>
+                    <h2 id="clientProposalCount">0</h2>
+                </div>
+
+                <div class="dashboard-card">
+                    <p>Completed</p>
+                    <h2 id="clientCompletedProjects">0</h2>
+                </div>
+
+            </div>
+
+            <!-- POST PROJECT -->
+            <div class="portal-panel">
+
+                <h3>Post New Project</h3>
+
+                <form onsubmit="postProject(event)">
+
+                    <div class="form-group">
+                        <label>Project Title</label>
+                        <input type="text" id="jobTitle" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category / Job Title</label>
+
+                        <select id="jobCategory" class="category-select" required>
+                            <option value="">Select Category</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Required Skills</label>
+                        <input
+                            type="text"
+                            id="jobSkills"
+                            placeholder="Example: HTML, CSS, JavaScript"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project Description</label>
+                        <textarea id="jobDescription" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Budget (₹)</label>
+                        <input type="number" id="jobBudget" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Deadline</label>
+                        <input type="date" id="jobDeadline" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project Type</label>
+
+                        <select id="jobType">
+                            <option value="Fixed Price">Fixed Price</option>
+                            <option value="Hourly">Hourly</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Experience Level</label>
+
+                        <select id="jobExperience">
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Expert">Expert</option>
+                        </select>
+
+                    </div>
+
+                    <button class="btn btn-primary">
+                        Post Project
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- CLIENT PROJECTS -->
+            <div class="portal-panel">
+
+                <h3>My Projects &amp; Proposals</h3>
+
+                <div id="clientProjects"></div>
+
+            </div>
+
+            <!-- CLIENT MESSAGES -->
+            <div class="portal-panel">
+
+                <h3>Messages</h3>
+
+                <div id="clientMessages"></div>
+
+                <form onsubmit="sendMessage(event)" style="margin-top:15px;">
+
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            id="messageText"
+                            placeholder="Write a message..."
+                            required
+                        >
+                    </div>
+
+                    <button class="btn btn-primary">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- CLIENT REVIEWS -->
+            <div class="portal-panel">
+
+                <h3>Reviews</h3>
+
+                <div id="clientReviews"></div>
+
+                <button class="btn btn-primary" style="margin-top:12px;" onclick="addReview()">
+                    Write a Review
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- FREELANCER PORTAL -->
+        <div id="freelancerPortal">
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-card">
+                    <p>Proposals Sent</p>
+                    <h2 id="freelancerProposalCount">0</h2>
+                </div>
+
+                <div class="dashboard-card">
+                    <p>Accepted</p>
+                    <h2 id="freelancerAccepted">0</h2>
+                </div>
+
+                <div class="dashboard-card">
+                    <p>Active Projects</p>
+                    <h2 id="freelancerActive">0</h2>
+                </div>
+
+                <div class="dashboard-card">
+                    <p>Completed</p>
+                    <h2 id="freelancerCompleted">0</h2>
+                </div>
+
+            </div>
+
+            <!-- PROFILE -->
+            <div class="portal-panel">
+
+                <h3>My Freelancer Profile</h3>
+
+                <form onsubmit="saveProfile(event)">
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="profileName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Skills</label>
+                        <input
+                            type="text"
+                            id="profileSkills"
+                            placeholder="JavaScript, Python, UI/UX"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea id="profileBio"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Portfolio Link</label>
+                        <input type="text" id="profilePortfolio">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Hourly Rate (₹)</label>
+                        <input type="number" id="profileRate" min="0">
+                    </div>
+
+                    <button class="btn btn-primary">
+                        Save Profile
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- FREELANCER PROPOSALS -->
+            <div class="portal-panel">
+
+                <h3>My Proposals</h3>
+
+                <div id="freelancerProposals"></div>
+
+            </div>
+
+            <!-- FREELANCER MESSAGES -->
+            <div class="portal-panel">
+
+                <h3>Messages</h3>
+
+                <div id="freelancerMessages"></div>
+
+                <form onsubmit="sendMessage(event)" style="margin-top:15px;">
+
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            id="freelancerMessageText"
+                            placeholder="Write a message..."
+                            required
+                        >
+                    </div>
+
+                    <button class="btn btn-primary">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- FREELANCER REVIEWS -->
+            <div class="portal-panel">
+
+                <h3>My Reviews</h3>
+
+                <div id="freelancerReviews"></div>
+
+                <button class="btn btn-primary" style="margin-top:12px;" onclick="addReview()">
+                    Write a Review
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- ADMIN PORTAL -->
+        <div id="adminPortal">
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-card">
+                    <p>Total Users</p>
+                    <h2 id="adminUsers">0</h2>
+                </div>
+
+                <div class="dashboard-card">
+                    <p>Total Projects</p>
+                    <h2 id="adminJobs">0</h2>
+                </div>
+
+                <div class="dashboard-card">
+                    <p>Total Proposals</p>
+                    <h2 id="adminProposals">0</h2>
+                </div>
+
+                <div class="dashboard-card">
+                    <p>Active Projects</p>
+                    <h2 id="adminActiveJobs">0</h2>
+                </div>
+
+            </div>
+
+            <!-- USERS -->
+            <div class="portal-panel">
+
+                <h3>Manage Users</h3>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="adminUserTable"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+            <!-- PROJECTS -->
+            <div class="portal-panel">
+
+                <h3>Manage Projects</h3>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Budget</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="adminProjectTable"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+
+    <div class="container">
+
+        <h2>Start Your Freelancing Journey Today</h2>
+
+        <p>
+            Post your project, showcase your skills and connect with professionals.
+        </p>
+
+        <a href="#register" class="btn btn-primary">
+            Get Started
+        </a>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>FreelanceHub</h3>
+
+                <p>
+                    A project-based freelance marketplace connecting
+                    clients and skilled professionals.
+                </p>
+            </div>
+
+            <div>
+                <h3>Platform</h3>
+
+                <ul>
+                    <li>Projects</li>
+                    <li>Freelancers</li>
+                    <li>Proposals</li>
+                    <li>Reviews</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>For Clients</h3>
+
+                <ul>
+                    <li>Post Projects</li>
+                    <li>Find Freelancers</li>
+                    <li>Manage Proposals</li>
+                    <li>Track Projects</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>For Freelancers</h3>
+
+                <ul>
+                    <li>Create Profile</li>
+                    <li>Find Projects</li>
+                    <li>Submit Proposals</li>
+                    <li>Build Portfolio</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 FreelanceHub. College Project Demonstration.
+        </div>
+
+    </div>
+
+</footer>
+
+<div id="notification" class="notification"></div>
+
+<script>
+
+/* =========================================================
+   FREELANCEHUB JAVASCRIPT
+   Merged build: main4 features + main3 polish + fixes
+   ========================================================= */
+
+/* ---------- CATEGORIES ---------- */
+
+const categories = [
+    "Web Development",
+    "App Development",
+    "UI/UX Design",
+    "Graphic Design",
+    "Digital Marketing",
+    "Content Writing",
+    "Data Science",
+    "Machine Learning",
+    "AI Development",
+    "Video Editing",
+    "Photography",
+    "SEO",
+    "Social Media Management",
+    "Software Testing",
+    "Data Entry",
+    "Virtual Assistant",
+    "WordPress Development",
+    "Game Development",
+    "Cybersecurity",
+    "Cloud Computing",
+    "Database Management",
+    "Logo Design",
+    "Animation",
+    "3D Modeling",
+    "Translation",
+    "Business Consulting"
+];
+
+/* ---------- STORAGE KEYS ---------- */
+
+const USERS_KEY = "fh_users";
+const JOBS_KEY = "fh_jobs";
+const PROPOSALS_KEY = "fh_proposals";
+const MESSAGES_KEY = "fh_messages";
+const REVIEWS_KEY = "fh_reviews";
+const CURRENT_USER_KEY = "fh_currentUser";
+
+/* ---------- ADMIN ACCOUNT ---------- */
+
+const ADMIN_ACCOUNT = {
+    id: "ADMIN_001",
+    name: "System Administrator",
+    email: "admin@freelancehub.com",
+    password: "admin123",
+    role: "admin"
+};
+
+/* ---------- STORAGE HELPERS ---------- */
+
+function getData(key) {
+    try {
+        return JSON.parse(localStorage.getItem(key)) || [];
+    } catch {
+        return [];
+    }
+}
+
+function saveData(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+function getCurrentUser() {
+    try {
+        return JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
+    } catch {
+        return null;
+    }
+}
+
+function setCurrentUser(user) {
+    localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
+}
+
+/* ---------- ID GENERATOR ---------- */
+
+function generateId(prefix) {
+    return prefix + "_" + Date.now() + "_" +
+        Math.random().toString(36).substring(2,8);
+}
+
+/* ---------- HTML ESCAPE ---------- */
+
+function escapeHTML(value) {
+    if (value === undefined || value === null) return "";
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+/* ---------- NOTIFICATION ---------- */
+
+function notify(message) {
+
+    const box = document.getElementById("notification");
+
+    box.textContent = message;
+    box.classList.add("show");
+
+    setTimeout(() => {
+        box.classList.remove("show");
+    }, 3000);
+}
+
+/* ---------- STATUS COLORS ---------- */
+
+function statusClass(status) {
+    switch (status) {
+        case "Accepted":
+        case "Completed":
+            return "status-accepted";
+        case "Rejected":
+            return "status-rejected";
+        case "In Progress":
+            return "status-progress";
+        default:
+            return "status-pending"; /* Posted, Pending */
+    }
+}
+
+/* =========================================================
+   INITIALIZE DATA
+   ========================================================= */
+
+function initializeData() {
+
+    let users = getData(USERS_KEY);
+    let jobs = getData(JOBS_KEY);
+    let proposals = getData(PROPOSALS_KEY);
+    let messages = getData(MESSAGES_KEY);
+    let reviews = getData(REVIEWS_KEY);
+
+    /* Admin: remove stale duplicates, then add the canonical account */
+    users = users.filter(user => user.email !== ADMIN_ACCOUNT.email);
+    users.push({ ...ADMIN_ACCOUNT });
+
+    /* Demo Client */
+
+    if (!users.some(u => u.email === "client@gmail.com")) {
+
+        users.push({
+            id: "CLIENT_001",
+            name: "Rahul Kumar",
+            email: "client@gmail.com",
+            password: "client123",
+            role: "client"
+        });
+    }
+
+    /* Demo Freelancer */
+
+    if (!users.some(u => u.email === "rahul@gmail.com")) {
+
+        users.push({
+            id: "FREELANCER_001",
+            name: "Rahul Kumar",
+            email: "rahul@gmail.com",
+            password: "rahul123",
+            role: "freelancer",
+            skills: "HTML, CSS, JavaScript, React",
+            bio: "Frontend developer specializing in responsive websites and modern interfaces.",
+            portfolio: "Rahul Portfolio",
+            hourlyRate: 800,
+            rating: 4.8
+        });
+    }
+
+    /* Migration for old records */
+
+    users = users.map((user, index) => {
+
+        if (!user.id) {
+            user.id = "USER_OLD_" + index;
+        }
+
+        return user;
+    });
+
+    jobs = jobs.map((job, index) => {
+
+        if (!job.id) {
+            job.id = "JOB_OLD_" + index;
+        }
+
+        if (!job.status) {
+            job.status = "Posted";
+        }
+
+        return job;
+    });
+
+    proposals = proposals.map((proposal, index) => {
+
+        if (!proposal.id) {
+            proposal.id = "PROPOSAL_OLD_" + index;
+        }
+
+        if (!proposal.status) {
+            proposal.status = "Pending";
+        }
+
+        return proposal;
+    });
+
+    messages = messages.map((message, index) => {
+
+        if (!message.id) {
+            message.id = "MESSAGE_OLD_" + index;
+        }
+
+        return message;
+    });
+
+    reviews = reviews.map((review, index) => {
+
+        if (!review.id) {
+            review.id = "REVIEW_OLD_" + index;
+        }
+
+        return review;
+    });
+
+    /* Sample Projects */
+
+    if (jobs.length === 0) {
+
+        jobs = [
+
+            {
+                id: "JOB_001",
+                title: "Website Development",
+                category: "Web Development",
+                skills: "HTML, CSS, JavaScript, React",
+                description:
+                    "Develop a responsive business website with modern UI, contact forms and mobile compatibility.",
+                budget: 15000,
+                deadline: "2026-09-30",
+                type: "Fixed Price",
+                experience: "Intermediate",
+                clientId: "CLIENT_001",
+                clientName: "Rahul Kumar",
+                status: "Posted",
+                createdAt: new Date().toISOString()
+            },
+
+            {
+                id: "JOB_002",
+                title: "Logo Design",
+                category: "Logo Design",
+                skills: "Photoshop, Illustrator, Branding",
+                description:
+                    "Create a professional logo and basic brand identity for a new business.",
+                budget: 5000,
+                deadline: "2026-10-15",
+                type: "Fixed Price",
+                experience: "Beginner",
+                clientId: "CLIENT_001",
+                clientName: "Rahul Kumar",
+                status: "Posted",
+                createdAt: new Date().toISOString()
+            },
+
+            {
+                id: "JOB_003",
+                title: "Mobile Application UI Design",
+                category: "UI/UX Design",
+                skills: "Figma, UI Design, Prototyping",
+                description:
+                    "Design clean and modern mobile application screens and interactive prototypes.",
+                budget: 12000,
+                deadline: "2026-10-20",
+                type: "Fixed Price",
+                experience: "Intermediate",
+                clientId: "CLIENT_001",
+                clientName: "Rahul Kumar",
+                status: "Posted",
+                createdAt: new Date().toISOString()
+            },
+
+            {
+                id: "JOB_004",
+                title: "Python Data Analysis",
+                category: "Data Science",
+                skills: "Python, Pandas, NumPy, Matplotlib",
+                description:
+                    "Analyze a dataset and prepare useful visualizations and insights.",
+                budget: 10000,
+                deadline: "2026-10-25",
+                type: "Fixed Price",
+                experience: "Intermediate",
+                clientId: "CLIENT_001",
+                clientName: "Rahul Kumar",
+                status: "Posted",
+                createdAt: new Date().toISOString()
+            }
+
+        ];
+    }
+
+    saveData(USERS_KEY, users);
+    saveData(JOBS_KEY, jobs);
+    saveData(PROPOSALS_KEY, proposals);
+    saveData(MESSAGES_KEY, messages);
+    saveData(REVIEWS_KEY, reviews);
+}
+
+/* =========================================================
+   CATEGORY DROPDOWNS
+   ========================================================= */
+
+function populateCategories() {
+
+    const filter = document.getElementById("projectCategoryFilter");
+    const jobCategory = document.getElementById("jobCategory");
+
+    categories.forEach(category => {
+
+        const option1 = document.createElement("option");
+        option1.value = category;
+        option1.textContent = category;
+
+        filter.appendChild(option1);
+
+        const option2 = document.createElement("option");
+        option2.value = category;
+        option2.textContent = category;
+
+        jobCategory.appendChild(option2);
+    });
+}
+
+/* =========================================================
+   REGISTER
+   ========================================================= */
+
+function register(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("registerName").value.trim();
+    const email = document.getElementById("registerEmail").value.trim().toLowerCase();
+    const password = document.getElementById("registerPassword").value;
+    const role = document.getElementById("registerRole").value;
+
+    let users = getData(USERS_KEY);
+
+    if (users.some(user => user.email === email)) {
+        notify("An account with this email already exists.");
+        return;
+    }
+
+    const newUser = {
+
+        id: generateId("USER"),
+        name,
+        email,
+        password,
+        role,
+
+        skills: "",
+        bio: "",
+        portfolio: "",
+        hourlyRate: 0,
+        rating: 0
+
+    };
+
+    users.push(newUser);
+
+    saveData(USERS_KEY, users);
+
+    document.querySelector("#register form").reset();
+
+    notify("Registration successful. Please login.");
+
+    document.getElementById("login").scrollIntoView();
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+function login(event) {
+
+    event.preventDefault();
+
+    const email =
+        document.getElementById("loginEmail").value.trim().toLowerCase();
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    const role =
+        document.getElementById("loginRole").value;
+
+    const users = getData(USERS_KEY);
+
+    const user = users.find(u =>
+        u.email === email &&
+        u.password === password &&
+        u.role === role
+    );
+
+    if (!user) {
+        notify("Invalid email, password or role.");
+        return;
+    }
+
+    setCurrentUser(user);
+
+    updateNavigation();
+    showPortal();
+
+    notify("Login successful.");
+}
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+function logout() {
+
+    localStorage.removeItem(CURRENT_USER_KEY);
+
+    updateNavigation();
+
+    document.getElementById("portal").classList.remove("active");
+
+    window.location.hash = "home";
+
+    notify("Logged out successfully.");
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+function updateNavigation() {
+
+    const user = getCurrentUser();
+
+    document.getElementById("portalNav")
+        .classList.toggle("hidden", !user);
+
+    document.getElementById("logoutBtn")
+        .classList.toggle("hidden", !user);
+
+    document.getElementById("loginNav")
+        .classList.toggle("hidden", !!user);
+
+    document.getElementById("registerNav")
+        .classList.toggle("hidden", !!user);
+}
+
+/* =========================================================
+   PROJECT RENDER
+   ========================================================= */
+
+function renderProjects() {
+
+    const jobs = getData(JOBS_KEY);
+
+    const search =
+        document.getElementById("projectSearch").value
+            .trim()
+            .toLowerCase();
+
+    const category =
+        document.getElementById("projectCategoryFilter").value;
+
+    const sort =
+        document.getElementById("projectSort").value;
+
+    let filtered = jobs.filter(job => {
+
+        const matchesSearch =
+            !search ||
+            job.title.toLowerCase().includes(search) ||
+            job.description.toLowerCase().includes(search) ||
+            job.skills.toLowerCase().includes(search);
+
+        const matchesCategory =
+            !category || job.category === category;
+
+        return matchesSearch && matchesCategory;
+    });
+
+    if (sort === "budgetHigh") {
+        filtered.sort((a,b) => b.budget - a.budget);
+    }
+
+    if (sort === "budgetLow") {
+        filtered.sort((a,b) => a.budget - b.budget);
+    }
+
+    if (sort === "newest") {
+        filtered.sort((a,b) =>
+            new Date(b.createdAt || 0) -
+            new Date(a.createdAt || 0)
+        );
+    }
+
+    const container = document.getElementById("projectList");
+
+    if (filtered.length === 0) {
+
+        container.innerHTML =
+            `<div class="empty" style="grid-column:1/-1;">
+                No projects found.
+            </div>`;
+
+        return;
+    }
+
+    container.innerHTML = filtered.map(job => {
+
+        const currentUser = getCurrentUser();
+
+        const alreadyApplied =
+            currentUser &&
+            currentUser.role === "freelancer" &&
+            getData(PROPOSALS_KEY).some(p =>
+                p.jobId === job.id &&
+                p.freelancerId === currentUser.id
+            );
+
+        let action = "";
+
+        if (currentUser && currentUser.role === "freelancer") {
+
+            action = `
+                <button
+                    class="btn ${alreadyApplied ? "btn-secondary" : "btn-primary"}"
+                    style="width:100%;margin-top:15px;"
+                    onclick="applyProject('${job.id}')"
+                    ${alreadyApplied ? "disabled" : ""}
+                >
+                    ${alreadyApplied ? "Proposal Submitted" : "Submit Proposal"}
+                </button>
+            `;
+
+        } else if (!currentUser) {
+
+            /* From main3: invite guests to login instead of a dead button */
+            action = `
+                <a
+                    href="#login"
+                    class="btn btn-secondary"
+                    style="width:100%;margin-top:15px;display:block;text-align:center;"
+                >
+                    Login to Apply
+                </a>
+            `;
+        }
+
+        return `
+
+            <div class="card">
+
+                <span class="category">
+                    ${escapeHTML(job.category)}
+                </span>
+
+                <h3>${escapeHTML(job.title)}</h3>
+
+                <p>
+                    ${escapeHTML(job.description)}
+                </p>
+
+                <div style="margin-top:10px;">
+                    ${String(job.skills || "")
+                        .split(",")
+                        .map(skill => skill.trim())
+                        .filter(Boolean)
+                        .map(skill =>
+                            `<span class="skill">${escapeHTML(skill)}</span>`
+                        )
+                        .join("")
+                    }
+                </div>
+
+                <div style="margin-top:12px;font-size:13px;color:#6b7280;">
+                    👤 Client: ${escapeHTML(job.clientName)}
+                </div>
+
+                <div style="margin-top:6px;font-size:13px;color:#6b7280;">
+                    📌 ${escapeHTML(job.type || "Fixed Price")}
+                </div>
+
+                <div style="margin-top:6px;font-size:13px;color:#6b7280;">
+                    🎓 ${escapeHTML(job.experience || "Beginner")}
+                </div>
+
+                <div class="card-footer">
+
+                    <span class="price">
+                        ₹${Number(job.budget).toLocaleString("en-IN")}
+                    </span>
+
+                    <span class="deadline">
+                        Deadline: ${formatDate(job.deadline)}
+                    </span>
+
+                </div>
+
+                ${action}
+
+            </div>
+        `;
+
+    }).join("");
+}
+
+/* =========================================================
+   APPLY PROJECT
+   ========================================================= */
+
+function applyProject(jobId) {
+
+    const user = getCurrentUser();
+
+    if (!user) {
+
+        notify("Please login as a freelancer first.");
+
+        document.getElementById("login").scrollIntoView();
+
+        return;
+    }
+
+    if (user.role !== "freelancer") {
+        notify("Only freelancers can submit proposals.");
+        return;
+    }
+
+    const jobs = getData(JOBS_KEY);
+
+    const job = jobs.find(j => j.id === jobId);
+
+    if (!job) {
+        notify("Project not found.");
+        return;
+    }
+
+    const proposals = getData(PROPOSALS_KEY);
+
+    if (proposals.some(p =>
+        p.jobId === jobId &&
+        p.freelancerId === user.id
+    )) {
+        notify("You already submitted a proposal.");
+        return;
+    }
+
+    const bid = prompt(
+        "Enter your bid amount (₹):",
+        job.budget
+    );
+
+    if (!bid || Number(bid) <= 0) {
+        return;
+    }
+
+    const delivery = prompt(
+        "Estimated delivery time:",
+        "7 days"
+    );
+
+    const coverLetter = prompt(
+        "Write a short cover letter:"
+    );
+
+    proposals.push({
+
+        id: generateId("PROPOSAL"),
+        jobId,
+        freelancerId: user.id,
+        freelancerName: user.name,
+        clientId: job.clientId,
+        bidAmount: Number(bid),
+        deliveryTime: delivery || "Not specified",
+        coverLetter: coverLetter || "",
+        status: "Pending",
+        createdAt: new Date().toISOString()
+
+    });
+
+    saveData(PROPOSALS_KEY, proposals);
+
+    notify("Proposal submitted successfully.");
+
+    renderProjects();
+}
+
+/* =========================================================
+   POST PROJECT
+   ========================================================= */
+
+function postProject(event) {
+
+    event.preventDefault();
+
+    const user = getCurrentUser();
+
+    if (!user || user.role !== "client") {
+        notify("Only clients can post projects.");
+        return;
+    }
+
+    const job = {
+
+        id: generateId("JOB"),
+
+        title:
+            document.getElementById("jobTitle").value.trim(),
+
+        category:
+            document.getElementById("jobCategory").value,
+
+        skills:
+            document.getElementById("jobSkills").value.trim(),
+
+        description:
+            document.getElementById("jobDescription").value.trim(),
+
+        budget:
+            Number(document.getElementById("jobBudget").value),
+
+        deadline:
+            document.getElementById("jobDeadline").value,
+
+        type:
+            document.getElementById("jobType").value,
+
+        experience:
+            document.getElementById("jobExperience").value,
+
+        clientId: user.id,
+
+        clientName: user.name,
+
+        status: "Posted",
+
+        createdAt: new Date().toISOString()
+    };
+
+    const jobs = getData(JOBS_KEY);
+
+    jobs.push(job);
+
+    saveData(JOBS_KEY, jobs);
+
+    document.querySelector("#clientPortal form").reset();
+
+    notify("Project posted successfully.");
+
+    renderProjects();
+    refreshPortal();
+}
+
+/* =========================================================
+   CLIENT PROJECTS
+   ========================================================= */
+
+function renderClientProjects() {
+
+    const user = getCurrentUser();
+
+    if (!user || user.role !== "client") return;
+
+    const jobs = getData(JOBS_KEY)
+        .filter(job => job.clientId === user.id);
+
+    const proposals = getData(PROPOSALS_KEY);
+
+    const container = document.getElementById("clientProjects");
+
+    if (jobs.length === 0) {
+
+        container.innerHTML =
+            `<div class="empty">You have not posted any projects.</div>`;
+
+        return;
+    }
+
+    container.innerHTML = jobs.map(job => {
+
+        const jobProposals =
+            proposals.filter(p => p.jobId === job.id);
+
+        return `
+
+            <div class="card" style="margin-bottom:15px;">
+
+                <span class="category">
+                    ${escapeHTML(job.category)}
+                </span>
+
+                <h3>${escapeHTML(job.title)}</h3>
+
+                <p>${escapeHTML(job.description)}</p>
+
+                <p style="margin-top:10px;">
+                    <strong>Budget:</strong>
+                    ₹${Number(job.budget).toLocaleString("en-IN")}
+                </p>
+
+                <p>
+                    <strong>Deadline:</strong>
+                    ${formatDate(job.deadline)}
+                </p>
+
+                <p>
+                    <strong>Project Type:</strong>
+                    ${escapeHTML(job.type)}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    <span class="status ${statusClass(job.status)}">
+                        ${escapeHTML(job.status)}
+                    </span>
+                </p>
+
+                <h4 style="margin-top:20px;margin-bottom:10px;">
+                    Proposals (${jobProposals.length})
+                </h4>
+
+                ${
+                    jobProposals.length === 0
+                    ?
+                    `<p>No proposals received yet.</p>`
+                    :
+                    jobProposals.map(proposal => `
+
+                        <div class="message">
+
+                            <strong>
+                                ${escapeHTML(proposal.freelancerName)}
+                            </strong>
+
+                            <p>
+                                Bid:
+                                ₹${Number(proposal.bidAmount)
+                                    .toLocaleString("en-IN")}
+                            </p>
+
+                            <p>
+                                Delivery:
+                                ${escapeHTML(proposal.deliveryTime)}
+                            </p>
+
+                            <p>
+                                ${escapeHTML(proposal.coverLetter)}
+                            </p>
+
+                            <p>
+                                Status:
+                                <span class="status ${statusClass(proposal.status)}">
+                                    ${escapeHTML(proposal.status)}
+                                </span>
+                            </p>
+
+                            ${
+                                proposal.status === "Pending"
+                                ?
+                                `
+                                <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
+
+                                    <button
+                                        class="btn btn-success"
+                                        onclick="acceptProposal('${proposal.id}')">
+                                        Accept
+                                    </button>
+
+                                    <button
+                                        class="btn btn-danger"
+                                        onclick="rejectProposal('${proposal.id}')">
+                                        Reject
+                                    </button>
+
+                                </div>
+                                `
+                                :
+                                ""
+                            }
+
+                            ${
+                                proposal.status === "Accepted"
+                                ?
+                                `
+                                <button
+                                    class="btn btn-warning"
+                                    style="margin-top:10px;"
+                                    onclick="completePayment('${proposal.id}')">
+                                    Mark Payment Complete
+                                </button>
+                                `
+                                :
+                                ""
+                            }
+
+                        </div>
+
+                    `).join("")
+                }
+
+            </div>
+
+        `;
+
+    }).join("");
+}
+
+/* =========================================================
+   ACCEPT PROPOSAL
+   ========================================================= */
+
+function acceptProposal(proposalId) {
+
+    const user = getCurrentUser();
+
+    if (!user || user.role !== "client") {
+        return;
+    }
+
+    let proposals = getData(PROPOSALS_KEY);
+
+    const selected = proposals.find(p => p.id === proposalId);
+
+    if (!selected) return;
+
+    proposals = proposals.map(p => {
+
+        if (p.jobId === selected.jobId) {
+
+            if (p.id === selected.id) {
+                p.status = "Accepted";
+            } else if (p.status === "Pending") {
+                p.status = "Rejected";
+            }
+
+        }
+
+        return p;
+    });
+
+    saveData(PROPOSALS_KEY, proposals);
+
+    let jobs = getData(JOBS_KEY);
+
+    jobs = jobs.map(job => {
+
+        if (job.id === selected.jobId) {
+            job.status = "In Progress";
+        }
+
+        return job;
+    });
+
+    saveData(JOBS_KEY, jobs);
+
+    notify("Proposal accepted.");
+
+    refreshPortal();
+    renderProjects();
+}
+
+/* =========================================================
+   REJECT PROPOSAL
+   ========================================================= */
+
+function rejectProposal(proposalId) {
+
+    let proposals = getData(PROPOSALS_KEY);
+
+    proposals = proposals.map(p => {
+
+        if (p.id === proposalId) {
+            p.status = "Rejected";
+        }
+
+        return p;
+    });
+
+    saveData(PROPOSALS_KEY, proposals);
+
+    notify("Proposal rejected.");
+
+    refreshPortal();
+}
+
+/* =========================================================
+   PAYMENT COMPLETION (demo)
+   ========================================================= */
+
+function completePayment(proposalId) {
+
+    let proposals = getData(PROPOSALS_KEY);
+
+    const proposal =
+        proposals.find(p => p.id === proposalId);
+
+    if (!proposal) return;
+
+    proposal.paymentStatus = "Completed";
+
+    saveData(PROPOSALS_KEY, proposals);
+
+    let jobs = getData(JOBS_KEY);
+
+    jobs = jobs.map(job => {
+
+        if (job.id === proposal.jobId) {
+            job.status = "Completed";
+        }
+
+        return job;
+    });
+
+    saveData(JOBS_KEY, jobs);
+
+    notify("Payment marked as completed (demonstration).");
+
+    refreshPortal();
+    renderProjects();
+}
+
+/* =========================================================
+   SAVE FREELANCER PROFILE
+   ========================================================= */
+
+function saveProfile(event) {
+
+    event.preventDefault();
+
+    const currentUser = getCurrentUser();
+
+    if (!currentUser || currentUser.role !== "freelancer") {
+        return;
+    }
+
+    let users = getData(USERS_KEY);
+
+    const index = users.findIndex(user =>
+        user.id === currentUser.id ||
+        user.email === currentUser.email
+    );
+
+    if (index === -1) {
+        notify("User profile not found.");
+        return;
+    }
+
+    users[index].name =
+        document.getElementById("profileName").value.trim();
+
+    users[index].skills =
+        document.getElementById("profileSkills").value.trim();
+
+    users[index].bio =
+        document.getElementById("profileBio").value.trim();
+
+    users[index].portfolio =
+        document.getElementById("profilePortfolio").value.trim();
+
+    users[index].hourlyRate =
+        Number(document.getElementById("profileRate").value) || 0;
+
+    saveData(USERS_KEY, users);
+
+    setCurrentUser(users[index]);
+
+    notify("Profile saved successfully.");
+
+    renderFreelancers();
+    refreshPortal();
+}
+
+/* =========================================================
+   RENDER FREELANCERS
+   ========================================================= */
+
+function renderFreelancers() {
+
+    const users = getData(USERS_KEY);
+
+    const search =
+        document.getElementById("freelancerSearch").value
+            .trim()
+            .toLowerCase();
+
+    const freelancers = users.filter(user => {
+
+        if (user.role !== "freelancer") return false;
+
+        return (
+            !search ||
+            user.name.toLowerCase().includes(search) ||
+            String(user.skills || "")
+                .toLowerCase()
+                .includes(search)
+        );
+    });
+
+    const container =
+        document.getElementById("freelancerList");
+
+    if (freelancers.length === 0) {
+
+        container.innerHTML =
+            `<div class="empty" style="grid-column:1/-1;">
+                No freelancers found.
+            </div>`;
+
+        return;
+    }
+
+    container.innerHTML = freelancers.map(user => {
+
+        const initials =
+            user.name
+                .split(" ")
+                .map(word => word[0])
+                .filter(Boolean)
+                .join("")
+                .substring(0,2)
+                .toUpperCase();
+
+        const ratingValue =
+            user.rating ? Math.round(user.rating) : 0;
+
+        const stars = ratingValue
+            ? "★".repeat(ratingValue) + "☆".repeat(5 - ratingValue)
+            : "☆☆☆☆☆";
+
+        return `
+
+            <div class="card">
+
+                <div class="profile-avatar">
+                    ${escapeHTML(initials)}
+                </div>
+
+                <h3>${escapeHTML(user.name)}</h3>
+
+                <div class="stars">
+                    ${stars}
+                </div>
+
+                <p>
+                    ${escapeHTML(
+                        user.bio ||
+                        "Freelancer profile available on FreelanceHub."
+                    )}
+                </p>
+
+                <div style="margin-top:12px;">
+
+                    ${
+                        String(user.skills || "")
+                            .split(",")
+                            .map(skill => skill.trim())
+                            .filter(Boolean)
+                            .map(skill =>
+                                `<span class="skill">
+                                    ${escapeHTML(skill)}
+                                </span>`
+                            )
+                            .join("")
+                    }
+
+                </div>
+
+                <div class="card-footer">
+
+                    <span>
+                        ₹${Number(user.hourlyRate || 0)
+                            .toLocaleString("en-IN")}/hr
+                    </span>
+
+                    <strong>
+                        ${user.rating || "New"} ⭐
+                    </strong>
+
+                </div>
+
+                ${
+                    user.portfolio
+                    ?
+                    `<p style="margin-top:10px;">
+                        Portfolio:
+                        ${escapeHTML(user.portfolio)}
+                    </p>`
+                    :
+                    ""
+                }
+
+            </div>
+        `;
+
+    }).join("");
+}
+
+/* =========================================================
+   MESSAGES
+   ========================================================= */
+
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    const user = getCurrentUser();
+
+    if (!user) {
+        notify("Please login first.");
+        return;
+    }
+
+    let text = "";
+
+    const clientInput =
+        document.getElementById("messageText");
+
+    const freelancerInput =
+        document.getElementById("freelancerMessageText");
+
+    if (user.role === "client" && clientInput) {
+        text = clientInput.value.trim();
+    }
+
+    if (user.role === "freelancer" && freelancerInput) {
+        text = freelancerInput.value.trim();
+    }
+
+    if (!text) return;
+
+    let messages = getData(MESSAGES_KEY);
+
+    messages.push({
+
+        id: generateId("MESSAGE"),
+        senderId: user.id,
+        senderName: user.name,
+        text,
+        createdAt: new Date().toISOString()
+
+    });
+
+    saveData(MESSAGES_KEY, messages);
+
+    if (clientInput) clientInput.value = "";
+    if (freelancerInput) freelancerInput.value = "";
+
+    notify("Message sent.");
+
+    refreshPortal();
+}
+
+/* =========================================================
+   RENDER MESSAGES
+   ========================================================= */
+
+function renderMessages() {
+
+    const user = getCurrentUser();
+
+    if (!user) return;
+
+    const messages =
+        getData(MESSAGES_KEY)
+            .filter(message =>
+                message.senderId === user.id
+            );
+
+    const html =
+        messages.length === 0
+        ?
+        `<div class="empty">No messages yet.</div>`
+        :
+        messages.map(message => `
+
+            <div class="message">
+
+                <strong>
+                    ${escapeHTML(message.senderName)}
+                </strong>
+
+                <p>
+                    ${escapeHTML(message.text)}
+                </p>
+
+                <small>
+                    ${formatDateTime(message.createdAt)}
+                </small>
+
+            </div>
+
+        `).join("");
+
+    const clientBox =
+        document.getElementById("clientMessages");
+
+    const freelancerBox =
+        document.getElementById("freelancerMessages");
+
+    if (user.role === "client" && clientBox) {
+        clientBox.innerHTML = html;
+    }
+
+    if (user.role === "freelancer" && freelancerBox) {
+        freelancerBox.innerHTML = html;
+    }
+}
+
+/* =========================================================
+   REVIEWS
+   ========================================================= */
+
+function addReview() {
+
+    const user = getCurrentUser();
+
+    if (!user) {
+        notify("Please login first.");
+        return;
+    }
+
+    const email = prompt(
+        "Email of the person you are reviewing:"
+    );
+
+    if (!email) return;
+
+    const target = getData(USERS_KEY).find(u =>
+        u.email === email.trim().toLowerCase() &&
+        u.email !== user.email &&
+        u.role !== "admin"
+    );
+
+    if (!target) {
+        notify("No account found with that email.");
+        return;
+    }
+
+    const rating = Number(prompt("Enter rating from 1 to 5:"));
+
+    if (!(rating >= 1 && rating <= 5)) {
+        notify("Rating must be between 1 and 5.");
+        return;
+    }
+
+    const text = prompt("Write your review:");
+
+    if (!text) return;
+
+    let reviews = getData(REVIEWS_KEY);
+
+    reviews.push({
+
+        id: generateId("REVIEW"),
+        reviewerId: user.id,
+        reviewerName: user.name,
+        targetUserId: target.id,
+        rating: Math.round(rating),
+        text,
+        createdAt: new Date().toISOString()
+
+    });
+
+    saveData(REVIEWS_KEY, reviews);
+
+    notify("Review added.");
+
+    refreshPortal();
+}
+
+/* =========================================================
+   RENDER REVIEWS
+   ========================================================= */
+
+function renderReviews() {
+
+    const user = getCurrentUser();
+
+    if (!user) return;
+
+    const reviews =
+        getData(REVIEWS_KEY)
+            .filter(review =>
+                review.targetUserId === user.id ||
+                review.reviewerId === user.id
+            );
+
+    const html =
+        reviews.length === 0
+        ?
+        `<div class="empty">No reviews yet.</div>`
+        :
+        reviews.map(review => `
+
+            <div class="review-item">
+
+                <strong>
+                    ${escapeHTML(review.reviewerName)}
+                </strong>
+
+                <div class="stars">
+                    ${"★".repeat(review.rating)}
+                    ${"☆".repeat(5 - review.rating)}
+                </div>
+
+                <p>
+                    ${escapeHTML(review.text)}
+                </p>
+
+            </div>
+
+        `).join("");
+
+    const clientReviews =
+        document.getElementById("clientReviews");
+
+    const freelancerReviews =
+        document.getElementById("freelancerReviews");
+
+    if (user.role === "client" && clientReviews) {
+        clientReviews.innerHTML = html;
+    }
+
+    if (user.role === "freelancer" && freelancerReviews) {
+        freelancerReviews.innerHTML = html;
+    }
+}
+
+/* =========================================================
+   FREELANCER PROPOSALS
+   ========================================================= */
+
+function renderFreelancerProposals() {
+
+    const user = getCurrentUser();
+
+    if (!user || user.role !== "freelancer") {
+        return;
+    }
+
+    const proposals =
+        getData(PROPOSALS_KEY)
+            .filter(p => p.freelancerId === user.id);
+
+    const jobs = getData(JOBS_KEY);
+
+    const container =
+        document.getElementById("freelancerProposals");
+
+    if (proposals.length === 0) {
+
+        container.innerHTML =
+            `<div class="empty">
+                You have not submitted any proposals.
+            </div>`;
+
+        return;
+    }
+
+    container.innerHTML =
+        proposals.map(proposal => {
+
+            const job =
+                jobs.find(j => j.id === proposal.jobId);
+
+            return `
+
+                <div class="card" style="margin-bottom:15px;">
+
+                    <span class="category">
+                        ${escapeHTML(job?.category || "Project")}
+                    </span>
+
+                    <h3>
+                        ${escapeHTML(job?.title || "Project")}
+                    </h3>
+
+                    <p>
+                        Bid:
+                        <strong>
+                            ₹${Number(proposal.bidAmount)
+                                .toLocaleString("en-IN")}
+                        </strong>
+                    </p>
+
+                    <p>
+                        Delivery:
+                        ${escapeHTML(proposal.deliveryTime)}
+                    </p>
+
+                    <p>
+                        Status:
+                        <span class="status ${statusClass(proposal.status)}">
+                            ${escapeHTML(proposal.status)}
+                        </span>
+                    </p>
+
+                    ${
+                        proposal.status === "Accepted"
+                        ?
+                        `
+                        <div style="margin-top:12px;">
+
+                            <p>
+                                Payment:
+                                <strong>
+                                    ${proposal.paymentStatus || "Pending"}
+                                </strong>
+                            </p>
+
+                            <div class="progress-container">
+
+                                <div
+                                    class="progress-bar"
+                                    style="width:${
+                                        proposal.paymentStatus === "Completed"
+                                        ? "100%"
+                                        : "50%"
+                                    };">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        `
+                        :
+                        ""
+                    }
+
+                </div>
+
+            `;
+
+        }).join("");
+}
+
+/* =========================================================
+   PORTAL
+   ========================================================= */
+
+function showPortal() {
+
+    const user = getCurrentUser();
+
+    if (!user) return;
+
+    document.getElementById("portal").classList.add("active");
+
+    document.getElementById("portalTitle").textContent =
+        user.role === "admin"
+        ? "Admin Portal"
+        : user.role === "client"
+        ? "Client Portal"
+        : "Freelancer Portal";
+
+    document.getElementById("portalSubtitle").textContent =
+        "Welcome, " + user.name;
+
+    document.getElementById("clientPortal")
+        .classList.toggle("hidden", user.role !== "client");
+
+    document.getElementById("freelancerPortal")
+        .classList.toggle("hidden", user.role !== "freelancer");
+
+    document.getElementById("adminPortal")
+        .classList.toggle("hidden", user.role !== "admin");
+
+    if (user.role === "client") {
+        renderClientPortal();
+    }
+
+    if (user.role === "freelancer") {
+        renderFreelancerPortal();
+    }
+
+    if (user.role === "admin") {
+        renderAdminPortal();
+    }
+
+    document.getElementById("portal").scrollIntoView();
+}
+
+/* =========================================================
+   CLIENT PORTAL
+   ========================================================= */
+
+function renderClientPortal() {
+
+    const user = getCurrentUser();
+
+    const jobs =
+        getData(JOBS_KEY)
+            .filter(job => job.clientId === user.id);
+
+    const proposals =
+        getData(PROPOSALS_KEY)
+            .filter(proposal =>
+                jobs.some(job => job.id === proposal.jobId)
+            );
+
+    document.getElementById("clientTotalProjects")
+        .textContent = jobs.length;
+
+    document.getElementById("clientActiveProjects")
+        .textContent =
+        jobs.filter(job =>
+            job.status === "In Progress"
+        ).length;
+
+    document.getElementById("clientProposalCount")
+        .textContent = proposals.length;
+
+    document.getElementById("clientCompletedProjects")
+        .textContent =
+        jobs.filter(job =>
+            job.status === "Completed"
+        ).length;
+
+    renderClientProjects();
+    renderMessages();
+    renderReviews();
+}
+
+/* =========================================================
+   FREELANCER PORTAL
+   ========================================================= */
+
+function renderFreelancerPortal() {
+
+    const user = getCurrentUser();
+
+    const proposals =
+        getData(PROPOSALS_KEY)
+            .filter(p => p.freelancerId === user.id);
+
+    document.getElementById("freelancerProposalCount")
+        .textContent = proposals.length;
+
+    document.getElementById("freelancerAccepted")
+        .textContent =
+        proposals.filter(p =>
+            p.status === "Accepted"
+        ).length;
+
+    const jobs = getData(JOBS_KEY);
+
+    const activeJobIds =
+        proposals
+            .filter(p => p.status === "Accepted")
+            .map(p => p.jobId);
+
+    document.getElementById("freelancerActive")
+        .textContent =
+        jobs.filter(j =>
+            activeJobIds.includes(j.id) &&
+            j.status === "In Progress"
+        ).length;
+
+    document.getElementById("freelancerCompleted")
+        .textContent =
+        jobs.filter(j =>
+            activeJobIds.includes(j.id) &&
+            j.status === "Completed"
+        ).length;
+
+    document.getElementById("profileName")
+        .value = user.name || "";
+
+    document.getElementById("profileSkills")
+        .value = user.skills || "";
+
+    document.getElementById("profileBio")
+        .value = user.bio || "";
+
+    document.getElementById("profilePortfolio")
+        .value = user.portfolio || "";
+
+    document.getElementById("profileRate")
+        .value = user.hourlyRate || "";
+
+    renderFreelancerProposals();
+    renderMessages();
+    renderReviews();
+}
+
+/* =========================================================
+   ADMIN PORTAL
+   ========================================================= */
+
+function renderAdminPortal() {
+
+    const users = getData(USERS_KEY);
+    const jobs = getData(JOBS_KEY);
+    const proposals = getData(PROPOSALS_KEY);
+
+    document.getElementById("adminUsers")
+        .textContent = users.length;
+
+    document.getElementById("adminJobs")
+        .textContent = jobs.length;
+
+    document.getElementById("adminProposals")
+        .textContent = proposals.length;
+
+    document.getElementById("adminActiveJobs")
+        .textContent =
+        jobs.filter(job =>
+            job.status === "In Progress"
+        ).length;
+
+    /* Users */
+
+    const userTable =
+        document.getElementById("adminUserTable");
+
+    userTable.innerHTML =
+        users.map(user => `
+
+            <tr>
+
+                <td>${escapeHTML(user.name)}</td>
+
+                <td>${escapeHTML(user.email)}</td>
+
+                <td>
+                    ${escapeHTML(user.role)}
+                </td>
+
+                <td>
+
+                    ${
+                        user.role === "admin"
+                        ?
+                        `<span style="color:#6b7280;">
+                            Protected
+                        </span>`
+                        :
+                        `
+                        <button
+                            class="btn btn-danger"
+                            onclick="deleteUser('${escapeHTML(user.id)}')">
+                            Delete
+                        </button>
+                        `
+                    }
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+    /* Projects */
+
+    const projectTable =
+        document.getElementById("adminProjectTable");
+
+    projectTable.innerHTML =
+        jobs.map(job => `
+
+            <tr>
+
+                <td>
+                    ${escapeHTML(job.title)}
+                </td>
+
+                <td>
+                    ${escapeHTML(job.category)}
+                </td>
+
+                <td>
+                    ₹${Number(job.budget)
+                        .toLocaleString("en-IN")}
+                </td>
+
+                <td>
+                    <span class="status ${statusClass(job.status)}">
+                        ${escapeHTML(job.status)}
+                    </span>
+                </td>
+
+                <td>
+
+                    <button
+                        class="btn btn-danger"
+                        onclick="deleteJob('${escapeHTML(job.id)}')">
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+}
+
+/* =========================================================
+   DELETE USER
+   ========================================================= */
+
+function deleteUser(userId) {
+
+    const currentUser = getCurrentUser();
+
+    if (!currentUser || currentUser.role !== "admin") {
+        notify("Admin access required.");
+        return;
+    }
+
+    let users = getData(USERS_KEY);
+
+    const index = users.findIndex(user =>
+        String(user.id) === String(userId) ||
+        user.email === userId
+    );
+
+    if (index === -1) {
+
+        notify("User not found.");
+
+        return;
+    }
+
+    if (
+        users[index].role === "admin" ||
+        users[index].email === ADMIN_ACCOUNT.email
+    ) {
+
+        notify("Admin account cannot be deleted.");
+
+        return;
+    }
+
+    const deletedEmail = users[index].email;
+
+    users.splice(index, 1);
+
+    saveData(USERS_KEY, users);
+
+    /* Remove proposals of deleted user */
+
+    let proposals = getData(PROPOSALS_KEY);
+
+    proposals = proposals.filter(proposal =>
+        proposal.freelancerId !== userId
+    );
+
+    saveData(PROPOSALS_KEY, proposals);
+
+    notify("User deleted: " + deletedEmail);
+
+    renderAdminPortal();
+}
+
+/* =========================================================
+   DELETE PROJECT
+   ========================================================= */
+
+function deleteJob(jobId) {
+
+    const currentUser = getCurrentUser();
+
+    if (!currentUser || currentUser.role !== "admin") {
+        notify("Admin access required.");
+        return;
+    }
+
+    let jobs = getData(JOBS_KEY);
+
+    const index = jobs.findIndex(job =>
+        String(job.id) === String(jobId)
+    );
+
+    if (index === -1) {
+
+        notify("Project not found.");
+
+        return;
+    }
+
+    jobs.splice(index, 1);
+
+    saveData(JOBS_KEY, jobs);
+
+    let proposals = getData(PROPOSALS_KEY);
+
+    proposals = proposals.filter(proposal =>
+        String(proposal.jobId) !== String(jobId)
+    );
+
+    saveData(PROPOSALS_KEY, proposals);
+
+    notify("Project deleted successfully.");
+
+    renderAdminPortal();
+    renderProjects();
+}
+
+/* =========================================================
+   REFRESH PORTAL
+   ========================================================= */
+
+function refreshPortal() {
+
+    const user = getCurrentUser();
+
+    if (!user) return;
+
+    if (user.role === "client") {
+        renderClientPortal();
+    }
+
+    if (user.role === "freelancer") {
+        renderFreelancerPortal();
+    }
+
+    if (user.role === "admin") {
+        renderAdminPortal();
+    }
+}
+
+/* =========================================================
+   DATE HELPERS
+   ========================================================= */
+
+function formatDate(date) {
+
+    if (!date) return "Not specified";
+
+    const d = new Date(date);
+
+    if (isNaN(d.getTime())) {
+        return date;
+    }
+
+    return d.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+    });
+}
+
+function formatDateTime(date) {
+
+    if (!date) return "";
+
+    const d = new Date(date);
+
+    if (isNaN(d.getTime())) {
+        return "";
+    }
+
+    return d.toLocaleString("en-IN");
+}
+
+/* =========================================================
+   START APPLICATION
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    initializeData();
+
+    populateCategories();
+
+    renderProjects();
+
+    renderFreelancers();
+
+    updateNavigation();
+
+    const user = getCurrentUser();
+
+    if (user) {
+        showPortal();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

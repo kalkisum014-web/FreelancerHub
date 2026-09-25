@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Proposal</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <h1>Submit Proposal</h1>
+
+    <form onsubmit="submitProposal(event)">
+
+        <input type="text"
+               id="freelancer"
+               placeholder="Freelancer Name"
+               required>
+
+        <input type="number"
+               id="bid"
+               placeholder="Your Bid Amount"
+               required>
+
+        <input type="number"
+               id="days"
+               placeholder="Delivery Time (Days)"
+               required>
+
+        <textarea id="coverLetter"
+                  placeholder="Write your proposal..."
+                  required></textarea>
+
+        <button type="submit">
+            Submit Proposal
+        </button>
+
+    </form>
+
+</div>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>

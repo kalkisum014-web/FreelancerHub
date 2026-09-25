@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reviews</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <h1>Review Freelancer</h1>
+
+    <form onsubmit="submitReview(event)">
+
+        <select id="rating" required>
+
+            <option value="">Select Rating</option>
+            <option>⭐⭐⭐⭐⭐</option>
+            <option>⭐⭐⭐⭐</option>
+            <option>⭐⭐⭐</option>
+            <option>⭐⭐</option>
+            <option>⭐</option>
+
+        </select>
+
+        <textarea id="review"
+                  placeholder="Write your review"
+                  required></textarea>
+
+        <button type="submit">
+            Submit Review
+        </button>
+
+    </form>
+
+</div>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>

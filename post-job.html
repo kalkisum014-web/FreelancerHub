@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post Job</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <h1>Post a New Project</h1>
+
+    <form onsubmit="postJob(event)">
+
+        <input type="text"
+               id="jobTitle"
+               placeholder="Project Title"
+               required>
+
+        <textarea id="description"
+                  placeholder="Project Description"
+                  required></textarea>
+
+        <input type="number"
+               id="budget"
+               placeholder="Budget"
+               required>
+
+        <input type="date"
+               id="deadline"
+               required>
+
+        <input type="text"
+               id="skills"
+               placeholder="Required Skills"
+               required>
+
+        <button type="submit">Post Project</button>
+
+    </form>
+
+</div>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>
